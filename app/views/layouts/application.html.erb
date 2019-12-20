@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Multiverse - Students Social Network</title>
-    <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= javascript_pack_tag 'Index' %>
-  </head>
+<head>
+  <title>Multiverse - Students Social Network</title>
+  <%= csrf_meta_tags %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= javascript_pack_tag 'Index' %>
+  <%= stylesheet_pack_tag 'Index' %>
+</head>
+
+<body>
+  <%= yield %>
+</body>
+
 </html>
