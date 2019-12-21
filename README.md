@@ -60,7 +60,7 @@ our docs.
 
 ### Installation Documentation
 
-1. Fork our repo from https://github.com/EmirVatric/Multiverse.
+1. Fork our repo from https://github.com/multiverse-students/Multiverse.
 2. In the console, download a copy of your forked repo with `git clone https://github.com/your_username/Multiverse.git` where `your_username` is your GitHub username.
 3. Enter the new **multiverse** directory with `cd multiverse`.
 4. Steps to install gems:
