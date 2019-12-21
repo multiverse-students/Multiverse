@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="app/assets/images/https___images-platform.99static.png"> 
   <h1 align="center">Multiverse</h1>
   <p align="center"><strong>From Students to Students</strong></p>
 </p>
