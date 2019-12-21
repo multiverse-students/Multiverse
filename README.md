@@ -33,7 +33,7 @@ developers, and all are welcome to find their place within our community. ❤️
 
 ## Contributing
 
-We encourage you to contribute to dev.to! Please check out the
+We encourage you to contribute to this repo! Please check out the
 [Contributing to multiverse guide](CONTRIBUTING.md) for guidelines about how to
 proceed.
 
@@ -64,12 +64,12 @@ our docs.
 2. In the console, download a copy of your forked repo with `git clone https://github.com/your_username/Multiverse.git` where `your_username` is your GitHub username.
 3. Enter the new **multiverse** directory with `cd multiverse`.
 4. Steps to install gems:
-    * You may need to first run `bundle install` if you have older gems in your environment from previous Rails work. If you get an error message like `Your Ruby version is 2.x.x, but your Gemfile specified 2.4.4` then you need to install the ruby version 2.6.0 using `rvm` or `rbenv`.
-	    * Using **rvm**: `rvm install 2.6.0` followed by `rvm use 2.6.0`
-	    * Using **rbenv**:  `rbenv install 2.6.0` followed by `rbenv local 2.6.0`
-    * Install gems with `bundle install --without production` from the rails root folder, to install the gems you'll need, excluding those needed only in production.
-7. Run `rails db:create` followed by `rails db:migrate` to set up the database
-8. Install static assets (like external javascript libraries, fonts) with `yarn install`
+   - You may need to first run `bundle install` if you have older gems in your environment from previous Rails work. If you get an error message like `Your Ruby version is 2.x.x, but your Gemfile specified 2.4.4` then you need to install the ruby version 2.6.0 using `rvm` or `rbenv`.
+     - Using **rvm**: `rvm install 2.6.0` followed by `rvm use 2.6.0`
+     - Using **rbenv**: `rbenv install 2.6.0` followed by `rbenv local 2.6.0`
+   - Install gems with `bundle install --without production` from the rails root folder, to install the gems you'll need, excluding those needed only in production.
+5. Run `rails db:create` followed by `rails db:migrate` to set up the database
+6. Install static assets (like external javascript libraries, fonts) with `yarn install`
 
 ## Code of Conduct
 
