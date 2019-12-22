@@ -3,9 +3,9 @@
 - [Contributing](#contributing)
   - [Where to contribute](#where-to-contribute)
   - [How to contribute](#how-to-contribute)
+  - [How to maintain the fork](#update-the-fork)
   - [Contribution guideline](#contribution-guideline)
     - [Create an issue](#create-an-issue)
-    - [Clean code with tests](#clean-code-with-tests)
     - [Create a pull request](#create-a-pull-request)
     - [Pull requests reviews and "force pushing"](#pull-requests-reviews-and-force-pushing)
   - [The bottom line](#the-bottom-line)
@@ -76,6 +76,14 @@ can all get on the same page. As always, when in doubt, ask!
    `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin USERNAME/that-new-feature-1234`
 5. Create a pull request for your branch 🎉
+
+
+### Update the fork
+
+1. In terminal type `$ git remote add upstream git@github.com:multiverse-students/Multiverse.git`
+2. Fetch the branches and their respective commits from the upstream repository. Commits to master will be stored in a local branch, upstream/master. `$ git fetch upstream`
+3. Check out your fork's local master branch. `$ git checkout master`
+4. Merge the changes from `upstream/master` into your local `master` branch. This brings your fork's master branch into sync with the upstream repository, without losing your local changes. `$ git merge upstream/master`
 
 ## Contribution guidelines
 
