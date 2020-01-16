@@ -22,7 +22,7 @@ gem 'webpacker'
 # gem 'therubyracer', platforms: :ruby
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+#gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -38,6 +38,13 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 3.30'
   gem 'rspec-rails', '~> 3.9'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.4'
+  gem 'capybara', '~> 2.7.1'
+  gem 'webdrivers', '~> 3.2.0'
+  gem 'guard-rspec', '~> 4.7.3'
 end
 
 group :development do
