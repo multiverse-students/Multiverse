@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:edit, :update, :destroy, :show]
+
   def index
     @posts = Post.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
   end
 
   def new
@@ -9,15 +15,26 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params);
+    @post = Post.new(post_params)
+
     if @post.save
-      redirect_to posts_path
+      respond_to do |format|
+        format.html { redirect_to posts_path }
+        format.json { render json: @post, status: :created }
+      end
     else
-      render 'new'
+      respond_to do |format|
+        format.html { render 'new' }
+        format.json { render json: @post.errors.full_messages, status: :unprocessable_entity }
+      end
     end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @post }
+    end
   end
 
   def edit
@@ -25,15 +42,24 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path
+      respond_to do |format|
+        format.html { redirect_to posts_path }
+        format.json { render json: @post }
+      end
     else
-      render 'edit'
+      respond_to do |format|
+        format.html { render 'edit' }
+        format.json { render json: @post.errors.full_messages, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    respond_to do |format|
+      format.html { redirect_to posts_path }
+      format.json { head :no_content }
+    end
   end
 
   private
