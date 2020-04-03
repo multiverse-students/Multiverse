@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Api::PostsController < ApplicationController
   before_action :find_post, only: [:edit, :update, :destroy, :show]
   def index
     @posts = Post.all
