@@ -7,7 +7,7 @@ export default (
   <Router>
     <Switch>
       <Route path="/" exact component={Homepage} />
-      <Route path="/signup" exact component={Registration} />
+      <Route path="/registration" exact component={Registration} />
     </Switch>
   </Router>
 );

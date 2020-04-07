@@ -4,20 +4,20 @@ import "./registration.css";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
-import { Link } from "react-router-dom";
+import SignUp from "./SignUp";
+import Login from "./Login";
 
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
+import { FacebookLoginButton } from "react-social-login-buttons";
+import { GoogleLoginButton } from "react-social-login-buttons";
+import { GithubLoginButton } from "react-social-login-buttons";
+import { TwitterLoginButton } from "react-social-login-buttons";
+import welcome from "../../../assets/images/welcome.png";
 
 class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 1,
+      value: 0,
     };
   }
 
@@ -42,112 +42,17 @@ class Registration extends Component {
                 <Tab label="Register" className="tab" />
               </Tabs>
             </div>
-            <form className="form" className="registration-form" noValidate>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <MailOutlineIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="first name"
-                label="First Name"
-                name="first name"
-                autoComplete="First Name"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="last name"
-                label="Last Name"
-                name="last name"
-                autoComplete="Last Name"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LockOpenIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password_confirmation"
-                label="Confirm Password"
-                type="password"
-                id="password_confirmation"
-                autoComplete="current-password"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LockOpenIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className="mt-4 mb-2"
-              >
-                Sign Up
-              </Button>
-            </form>
-            <Link from="/signup" to="/login">
-              <Button
-                type="submit"
-                fullWidth
-                variant="outlined"
-                color="secondary"
-              >
-                Login
-              </Button>
-            </Link>
+            <div className="forms-wrapper">
+              {value === 1 ? <SignUp /> : <Login />}
+            </div>
           </div>
-          <div className="col-6 social-login"></div>
+          <div className="col-6 social-container">
+            <img src={welcome} className="social-img" />
+            <div className="social-buttons">
+              <GoogleLoginButton onClick={() => alert("Hello")} />
+              <GithubLoginButton onClick={() => alert("Hello")} />
+            </div>
+          </div>
         </div>
       </div>
     );
