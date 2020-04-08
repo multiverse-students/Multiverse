@@ -7,10 +7,8 @@ import Tab from "@material-ui/core/Tab";
 import SignUp from "./SignUp";
 import Login from "./Login";
 
-import { FacebookLoginButton } from "react-social-login-buttons";
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { GithubLoginButton } from "react-social-login-buttons";
-import { TwitterLoginButton } from "react-social-login-buttons";
 import welcome from "../../../assets/images/welcome.png";
 
 class Registration extends Component {

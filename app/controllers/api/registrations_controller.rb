@@ -1,4 +1,5 @@
 class Api::RegistrationsController < ApplicationController
+  
   include CurrentUserConcern
   def create
     user = User.new(user_params)
