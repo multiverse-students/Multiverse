@@ -2,15 +2,16 @@ class Api::RegistrationsController < ApplicationController
   
   include CurrentUserConcern
   def create
+    p params
     user = User.new(user_params)
 
     if user.save
       render json: {
-        status: :created,
         user: user
-      }
+      },
+      status: 201
     else
-      render json: { status: :unprocessable_entity, errors: user.errors.full_messages }
+      render json: { errors: user.errors.full_messages }, status: 422
     end
   end
 

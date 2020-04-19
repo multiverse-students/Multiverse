@@ -27,7 +27,6 @@ class SignUp extends Component {
 
   handleSumbit(e) {
     e.preventDefault();
-    console.log(this.state);
     axios.post(`/api/registrations`, this.state).then((res) => {});
   }
   render() {
