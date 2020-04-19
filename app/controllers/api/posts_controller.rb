@@ -1,13 +1,11 @@
-class PostsController < ApplicationController
+class Api::PostsController < ApplicationController
+  before_action :authorize_request
   before_action :find_post, only: [:edit, :update, :destroy, :show]
 
   def index
     @posts = Post.all
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @posts }
-    end
+    render json: { data: @posts},status: 200
   end
 
   def new
