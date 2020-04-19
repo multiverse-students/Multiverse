@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
       @decoded = JsonWebToken.decode(header)
       @current_user = User.find(@decoded[:user_id])
     rescue ActiveRecord::RecordNotFound => e
-      render json: { errors: e.message }, status: :unauthorized
+      render json: { errors: e.message }, status: 401
     rescue JWT::DecodeError => e
-      render json: { errors: e.message }, status: :unauthorized
+      render json: { errors: e.message }, status: 401
     end
   end
 end

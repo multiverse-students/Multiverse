@@ -1,15 +1,10 @@
 class Api::RegistrationsController < ApplicationController
-  
-  include CurrentUserConcern
   def create
-    p params
     user = User.new(user_params)
 
     if user.save
-      render json: {
-        user: user
-      },
-      status: 201
+      token = JsonWebToken.encode(user_id: user.id)
+      render json: { access_token: token, token_type: "Bearer", user: user.attributes.except('password_digest') }, status: 201
     else
       render json: { errors: user.errors.full_messages }, status: 422
     end
