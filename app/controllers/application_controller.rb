@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     rescue ActiveRecord::RecordNotFound => e
       render json: { errors: e.message }, status: 401
     rescue JWT::DecodeError => e
-      render json: { errors: e.message }, status: 401
+      render json: { errors: [t('authentication.error')] }, status: 401
     end
   end
 end

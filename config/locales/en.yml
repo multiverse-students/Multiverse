@@ -31,4 +31,7 @@
 
 en:
   authentication:
-    error: "Invalid Credentials"
+    login_error: "Invalid Credentials"
+    error: "Not Authenticated"
+  users:
+    not_found: "This user does not exsist"

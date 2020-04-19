@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :posts
     resources :registrations, only: [:create]
+    resources :users, only: [:show, :update, :destroy]
 
     scope :auth do
       post '/login', to: 'sessions#login'
