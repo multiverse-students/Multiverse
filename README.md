@@ -70,6 +70,7 @@ our docs.
    - Install gems with `bundle install --without production` from the rails root folder, to install the gems you'll need, excluding those needed only in production.
 5. Run `rails db:create` followed by `rails db:migrate` to set up the database
 6. Install static assets (like external javascript libraries, fonts) with `yarn install`
+7. Run `rails s` to start the server and `bin/webpack-dev-server` to compile the javascript
 
 ## Code of Conduct
 
