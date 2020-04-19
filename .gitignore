@@ -24,3 +24,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+.generators
+.rakeTasks
+
+# IDE Specific
+.idea/
