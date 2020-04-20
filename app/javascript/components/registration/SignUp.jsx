@@ -6,6 +6,10 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import axios from "axios";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions";
+import { NotificationManager } from "react-notifications";
+import { withRouter } from "react-router-dom";
 
 class SignUp extends Component {
   constructor(props) {
@@ -27,7 +31,31 @@ class SignUp extends Component {
 
   handleSumbit(e) {
     e.preventDefault();
-    axios.post(`/api/registrations`, this.state).then((res) => {});
+    axios
+      .post(`/api/registrations`, this.state)
+      .then((res) => {
+        if (res.status == 201) {
+          const creds = {
+            email: this.state.email,
+            password: this.state.password,
+          };
+          this.props.logIn(creds).then((res) => {
+            if (res == 200) {
+              this.props.history.push("/");
+              NotificationManager.success(
+                "You have successfully logged in!",
+                "Welcome"
+              );
+            }
+          });
+        }
+      })
+      .catch((err) => {
+        NotificationManager.error(
+          "Please fill in form correctly!",
+          "SignUp failed"
+        );
+      });
   }
   render() {
     return (
@@ -135,4 +163,12 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logIn: (creds) => {
+      return dispatch(loginUser(creds));
+    },
+  };
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(SignUp));
