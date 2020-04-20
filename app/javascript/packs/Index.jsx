@@ -6,14 +6,29 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import App from "../components/App";
+import { render } from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import $ from "jquery";
 import Popper from "popper.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "../reducers/rootReducer";
+import thunkMiddleware from "redux-thunk";
+
+export const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunkMiddleware),
+    window.devToolsExtension ? window.devToolsExtension() : (f) => f
+  )
+);
 
 document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(
-    <App />,
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.body.appendChild(document.createElement("div"))
   );
 });

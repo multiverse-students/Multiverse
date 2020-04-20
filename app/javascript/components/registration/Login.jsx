@@ -1,15 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
-import axios from "axios";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
-import "react-notifications/lib/notifications.css";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions";
+import { NotificationManager } from "react-notifications";
+import { withRouter } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -29,26 +27,18 @@ class Login extends Component {
 
   handleSumbit(e) {
     e.preventDefault();
-    axios
-      .post(`/api/auth/login`, this.state)
-      .then((res) => {
-        if (res.status == 200) {
-          NotificationManager.success(
-            `Welcome back ${res.data.user.first_name}!`,
-            "Welcome"
-          );
-        }
-      })
-      .catch((err) => {
-        this.setState({
-          errors: err.response.data.errors,
-        });
-        NotificationManager.error(
-          `Please try with different credentials!`,
-          "Invalid Credentials"
+    const creds = { email: this.state.email, password: this.state.password };
+    this.props.logIn(creds).then((res) => {
+      if (res == 200) {
+        this.props.history.push("/");
+        NotificationManager.success(
+          "You have successfully logged in!",
+          "Welcome"
         );
-      });
+      }
+    });
   }
+
   render() {
     return (
       <form className="form" className="registration-form" noValidate>
@@ -105,4 +95,12 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logIn: (creds) => {
+      return dispatch(loginUser(creds));
+    },
+  };
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(Login));
