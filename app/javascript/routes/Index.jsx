@@ -4,13 +4,31 @@ import Homepage from "../components/Home";
 import Registration from "../components/registration/Registration";
 import { NotificationContainer } from "react-notifications";
 import "react-notifications/lib/notifications.css";
+import Navbar from "../components/navbar/Navbar";
 
 export default (
   <Router>
+    <Navbar />
     <NotificationContainer />
     <Switch>
-      <Route path="/" exact component={Homepage} />
-      <Route path="/registration" exact component={Registration} />
+      <Route
+        path="/"
+        exact
+        render={() => (
+          <Navbar>
+            <Homepage />
+          </Navbar>
+        )}
+      />
+      <Route
+        path="/registration"
+        exact
+        render={() => (
+          <Navbar>
+            <Registration />
+          </Navbar>
+        )}
+      />
     </Switch>
   </Router>
 );
