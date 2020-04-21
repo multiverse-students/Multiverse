@@ -14,7 +14,6 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 
 import InputBase from "@material-ui/core/InputBase";
@@ -25,6 +24,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import { Link } from "react-router-dom";
+import HomeIcon from "@material-ui/icons/Home";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
 
 const drawerWidth = 240;
 
@@ -54,6 +57,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
       width: "80%",
+    },
+  },
+  link: {
+    textDecoration: "none",
+    color: "black",
+    "&:active": {
+      color: "black",
+      textDecoration: "none",
+    },
+    "&:hover": {
+      textDecoration: "none",
     },
   },
   searchIcon: {
@@ -121,6 +135,11 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+  },
+  listItem: {
+    "&:hover": {
+      color: "black",
+    },
   },
   drawerHeader: {
     display: "flex",
@@ -325,25 +344,41 @@ export default function PersistentDrawerLeft(props) {
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
+          <Link to="/" onClick={handleDrawerClose} className={classes.link}>
+            <ListItem button component="li" className={classes.listItem}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="Home" />
             </ListItem>
-          ))}
+          </Link>
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
+          <Link
+            to="/registration"
+            onClick={handleDrawerClose}
+            className={classes.link}
+          >
+            <ListItem button component="li" className={classes.listItem}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <VpnKeyIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="Sign Up" />
             </ListItem>
-          ))}
+          </Link>
+          <Link
+            to="/registration"
+            onClick={handleDrawerClose}
+            className={classes.link}
+          >
+            <ListItem button component="li" className={classes.listItem}>
+              <ListItemIcon>
+                <LockOpenIcon />
+              </ListItemIcon>
+              <ListItemText primary="Login" />
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
       <main>
