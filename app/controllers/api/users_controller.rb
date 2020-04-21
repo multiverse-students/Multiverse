@@ -3,21 +3,19 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: {user: @user.attributes.except('password_digest')}, status: 200
+    render json: {user: @user}, status: 200
   end
 
   def me
-    render json: {user: @current_user.attributes.except('password_digest')}, status: 200
+    render json: {user: @current_user}, status: 200
   end
 
   def update
     user = User.find(params[:id])
     authorize user
     
-    if user.update(user_params)
-      render json: {user: user.attributes.except('password_digest')}, status: 200
-    else
-      render json: { errors: user.errors.full_messages }, status: 422
+    if user.update!(user_params)
+      render json: {user: user}, status: 200
     end
   end
 

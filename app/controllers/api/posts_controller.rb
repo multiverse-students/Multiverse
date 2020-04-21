@@ -5,7 +5,7 @@ class Api::PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    render json: { data: @posts},status: 200
+    render json: @posts, include: ['user'], status: 200
   end
 
   def new
@@ -17,10 +17,8 @@ class Api::PostsController < ApplicationController
     @post.user = @current_user
     authorize @post
     
-    if @post.save
-      render json: {post: @post}, status: 201
-    else
-      render json: {errors: @post.errors.messages}, status: 422
+    if @post.save!
+      render json: {post: @post, author: @post.user}, status: 201
     end
   end
 

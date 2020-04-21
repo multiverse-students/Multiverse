@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   private
  
     def user_not_authorized
-      render json: {errors: 'You are not authorized to preforme this action!'}, status: 401
+      render json: {error: :not_authorized, message: 'You are not authorized to perform this action'}, status: 401
     end
 
     def authorize_request

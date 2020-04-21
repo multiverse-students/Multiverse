@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user&.authenticate(params[:password])
       token = JsonWebToken.encode(user_id: @user.id)
-      render json: { access_token: token, token_type: "Bearer", user: @user.attributes.except('password_digest') }, status: 200
+      render json: { access_token: token, token_type: "Bearer", user: @user }, status: 200
     else
       render json: { errors: t('authentication.login_error') }, status: 401
     end
