@@ -3,19 +3,20 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: {user: @user}, status: 200
+    render json: @user, status: 200
   end
 
   def me
-    render json: {user: @current_user}, status: 200
+    @user = @current_user
+    render json: @user, status: 200
   end
 
   def update
-    user = User.find(params[:id])
-    authorize user
+    @user = User.find(params[:id])
+    authorize @user
     
-    if user.update!(user_params)
-      render json: {user: user}, status: 200
+    if @user.update!(user_params)
+      render json: @user, status: 200
     end
   end
 

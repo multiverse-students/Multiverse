@@ -4,7 +4,7 @@ class Api::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
+    authorize @posts
     render json: @posts, status: 200
   end
 
@@ -23,34 +23,23 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: @post }
-    end
-  end
-
-  def edit
+    authorize @post
+    render json: @post, status: 200
   end
 
   def update
-    if @post.update(post_params)
-      respond_to do |format|
-        format.html { redirect_to posts_path }
-        format.json { render json: @post }
-      end
-    else
-      respond_to do |format|
-        format.html { render 'edit' }
-        format.json { render json: @post.errors.full_messages, status: :unprocessable_entity }
-      end
+    authorize @post
+
+    if @post.update!(post_params)
+      render json: @post, status: 200
     end
   end
 
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_path }
-      format.json { head :no_content }
+    authorize @post
+
+    if @post.destroy
+      render json: {data: 'success'}, status: 200
     end
   end
 
