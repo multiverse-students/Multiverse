@@ -5,7 +5,7 @@ class Api::PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    render json: @posts, include: ['user'], status: 200
+    render json: @posts, status: 200
   end
 
   def new
