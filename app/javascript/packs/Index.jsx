@@ -15,6 +15,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "../reducers/rootReducer";
 import thunkMiddleware from "redux-thunk";
+import axios from "axios";
 
 export const store = createStore(
   rootReducer,
@@ -23,6 +24,15 @@ export const store = createStore(
     window.devToolsExtension ? window.devToolsExtension() : (f) => f
   )
 );
+
+(function () {
+  let token = store.getState().auth.access_token;
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = token;
+  } else {
+    axios.defaults.headers.common["Authorization"] = "";
+  }
+})();
 
 document.addEventListener("DOMContentLoaded", () => {
   render(

@@ -14,17 +14,13 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
+    @post.user = @current_user
+    authorize @post
+    
     if @post.save
-      respond_to do |format|
-        format.html { redirect_to posts_path }
-        format.json { render json: @post, status: :created }
-      end
+      render json: {post: @post}, status: 201
     else
-      respond_to do |format|
-        format.html { render 'new' }
-        format.json { render json: @post.errors.full_messages, status: :unprocessable_entity }
-      end
+      render json: {errors: @post.errors.messages}, status: 422
     end
   end
 
@@ -63,7 +59,7 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.permit(:title, :content)
   end
 
   def find_post
