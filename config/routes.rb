@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :registrations, only: [:create]
     resources :users, only: [:show, :update, :destroy]
 
+    get '/me', to: 'users#me'
+
     scope :auth do
       post '/login', to: 'sessions#login'
     end

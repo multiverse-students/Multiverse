@@ -2,12 +2,27 @@ class Api::UsersController < ApplicationController
   before_action :authorize_request
 
   def show
-    begin
-      @user = User.find(params[:id])
-      render json: {user: @user.attributes.except('password_digest')}, status: 200
-    rescue
-      render json: {errors: [t('users.not_found')]}, status: 404
+    @user = User.find(params[:id])
+    render json: {user: @user}, status: 200
+  end
+
+  def me
+    render json: {user: @current_user}, status: 200
+  end
+
+  def update
+    user = User.find(params[:id])
+    authorize user
+    
+    if user.update!(user_params)
+      render json: {user: user}, status: 200
     end
+  end
+
+  private
+
+  def user_params
+    params.permit(:first_name, :last_name, :bio)
   end
 
 end

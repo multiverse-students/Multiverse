@@ -354,32 +354,49 @@ export default function PersistentDrawerLeft(props) {
           </Link>
         </List>
         <Divider />
-        <List>
-          <Link
-            to="/registration"
-            onClick={handleDrawerClose}
-            className={classes.link}
-          >
-            <ListItem button component="li" className={classes.listItem}>
-              <ListItemIcon>
-                <VpnKeyIcon />
-              </ListItemIcon>
-              <ListItemText primary="Sign Up" />
-            </ListItem>
-          </Link>
-          <Link
-            to="/registration"
-            onClick={handleDrawerClose}
-            className={classes.link}
-          >
-            <ListItem button component="li" className={classes.listItem}>
-              <ListItemIcon>
-                <LockOpenIcon />
-              </ListItemIcon>
-              <ListItemText primary="Login" />
-            </ListItem>
-          </Link>
-        </List>
+        {props.isAuthenticated ? (
+          <List>
+            <Link
+              to="/registration"
+              onClick={handleDrawerClose}
+              className={classes.link}
+            >
+              <ListItem button component="li" className={classes.listItem}>
+                <ListItemIcon>
+                  <VpnKeyIcon />
+                </ListItemIcon>
+                <ListItemText primary="Sign Up" />
+              </ListItem>
+            </Link>
+            <Link
+              to="/registration"
+              onClick={handleDrawerClose}
+              className={classes.link}
+            >
+              <ListItem button component="li" className={classes.listItem}>
+                <ListItemIcon>
+                  <LockOpenIcon />
+                </ListItemIcon>
+                <ListItemText primary="Login" />
+              </ListItem>
+            </Link>
+          </List>
+        ) : (
+          <List>
+            <Link
+              to="/logout"
+              onClick={handleDrawerClose}
+              className={classes.link}
+            >
+              <ListItem button component="li" className={classes.listItem}>
+                <ListItemIcon>
+                  <VpnKeyIcon />
+                </ListItemIcon>
+                <ListItemText primary="Log Out" />
+              </ListItem>
+            </Link>
+          </List>
+        )}
       </Drawer>
       <main>
         <div className={classes.drawerHeader} />
