@@ -8,5 +8,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :bio, length: { maximum: 300 }
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

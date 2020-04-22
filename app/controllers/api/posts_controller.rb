@@ -1,10 +1,13 @@
 class Api::PostsController < ApplicationController
   before_action :authorize_request
-  before_action :find_post, only: [:edit, :update, :destroy, :show]
+  before_action :find_post, only: [:update, :destroy, :show]
+
+  include Includable
 
   def index
     @posts = Post.all
     authorize @posts
+    include(params[:include])
     render json: @posts, status: 200
   end
 
@@ -44,6 +47,8 @@ class Api::PostsController < ApplicationController
   end
 
   private
+
+ 
 
   def post_params
     params.permit(:title, :content)
