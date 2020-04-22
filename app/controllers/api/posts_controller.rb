@@ -7,8 +7,8 @@ class Api::PostsController < ApplicationController
   def index
     @posts = Post.all
     authorize @posts
-    include(params[:include])
-    render json: @posts, status: 200
+    
+    render json: @posts, include: include(params[:include]), status: 200
   end
 
   def new
