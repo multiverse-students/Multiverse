@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
   before_action :authorize_request
-  before_action :find_comment, only: [:update, :destroy]
+  before_action :find_comment, only: [:update, :destroy, :show]
 
   def create
     post = Post.find(params[:post_id])
@@ -15,6 +15,12 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def show
+    authorize @comment
+    
+    render json: @comment, status: 200
+  end
+
   def update
     authorize @comment
 
@@ -24,6 +30,11 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
+    authorize @comment
+
+    if @comment.destroy
+      render json: {data: 'success'}, status: 200
+    end
   end
 
   private

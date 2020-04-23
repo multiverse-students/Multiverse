@@ -27,7 +27,8 @@ class Api::PostsController < ApplicationController
 
   def show
     authorize @post
-    render json: @post, status: 200
+    
+    render json: @post, include: include(params[:include]), status: 200
   end
 
   def update
