@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'homepage#index'
   namespace :api do
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
     resources :registrations, only: [:create]
     resources :users, only: [:show, :update, :destroy]
 

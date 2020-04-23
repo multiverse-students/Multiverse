@@ -3,7 +3,7 @@ module Error
     def self.included(clazz)
       clazz.class_eval do
         rescue_from ActiveRecord::RecordNotFound do |e|
-          respond(:record_not_found, 404, 'Record not found')
+          respond(:record_not_found, 404, e)
         end
         rescue_from ActiveRecord::RecordInvalid do |e|
           respond(:unprocessable_entity, 422, e.record.errors.messages) 
