@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 15px",
     maxWidth: "1440px",
     gridGap: "10px",
+    paddingBottom: "10px",
   },
   newPostWrapper: {
     width: "100%",
@@ -77,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
   postsSectionWrapper: {
     overflowY: "auto",
-    height: "87vh",
+    height: "90vh",
   },
   postBody: {
     padding: "10px 25px",

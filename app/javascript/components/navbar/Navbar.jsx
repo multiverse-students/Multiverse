@@ -144,7 +144,13 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     display: "flex",
     alignItems: "center",
-    padding: "25px 0",
+    padding: "20px 0",
+    justifyContent: "flex-end",
+  },
+  drawerHeaderButton: {
+    display: "flex",
+    alignItems: "center",
+    padding: "8px 0px",
     justifyContent: "flex-end",
   },
   content: {
@@ -332,7 +338,7 @@ export default function PersistentDrawerLeft(props) {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
+        <div className={classes.drawerHeaderButton}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
