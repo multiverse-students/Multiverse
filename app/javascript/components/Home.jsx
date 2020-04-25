@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 15px",
     maxWidth: "1440px",
     gridGap: "10px",
-    paddingBottom: "10px",
   },
   newPostWrapper: {
     width: "100%",
@@ -91,6 +90,15 @@ const useStyles = makeStyles((theme) => ({
     height: "87vh",
     background: "#3F51B5",
     borderRadius: "5px",
+    color: "white",
+    overflowY: "auto",
+  },
+  networkTitle: {
+    fontWeight: "bold",
+    textAlign: "center",
+    padding: "10px 0px",
+    fontSize: "15px",
+    background: "#707DC8",
   },
 }));
 
@@ -176,7 +184,135 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <div className={classes.contactBar}></div>
+      <div className={classes.contactBar}>
+        <div className={classes.networkTitle}>NETWORK</div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
