@@ -1,36 +1,35 @@
-import React, { Component } from "react";
-import "./home.css";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 
-class Homepage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const useStyles = makeStyles((theme) => ({
+  homepageWrapper: {
+    width: "100%",
+    display: "grid",
+    margin: "0 auto",
+    gridTemplateColumns: "0.5fr 1fr 0.5fr",
+    padding: "0 15px",
+    maxWidth: "1440px",
+  },
+  feed: {},
+  newPostWrapper: {
+    width: "100%",
+    height: "100px",
+    background: "lightgray",
+    borderRadius: "10px",
+  },
+}));
 
-  componentDidMount() {
-    if (!this.props.isAuthenticated) {
-      this.props.history.push("/registration");
-    }
-  }
-
-  render() {
-    return (
-      <div className="commingSoonHomepagewrapper">
-        <div>
-          <h1 className="commingSoonHomepageTitle">WELCOME TO MULTIVERSE</h1>
-          <h4 className="commingSoonHomepageSubtitle">
-            open-source project from Microverse students
-          </h4>
-        </div>
+function Homepage() {
+  const classes = useStyles();
+  return (
+    <div className={classes.homepageWrapper}>
+      <div></div>
+      <div className={classes.feed}>
+        <div className={classes.newPostWrapper}></div>
       </div>
-    );
-  }
+      <div></div>
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default withRouter(connect(mapStateToProps, null)(Homepage));
+export default Homepage;
