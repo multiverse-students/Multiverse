@@ -87,8 +87,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10px",
   },
   contactBar: {
-    height: "87vh",
+    height: "90vh",
+    borderRadius: "5px",
+    color: "white",
+    overflowY: "auto",
     background: "#3F51B5",
+  },
+  miscBar: {
+    height: "90vh",
     borderRadius: "5px",
     color: "white",
     overflowY: "auto",
@@ -99,6 +105,20 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px 0px",
     fontSize: "15px",
     background: "#707DC8",
+    borderTopLeftRadius: "5px",
+    borderTopRightRadius: "5px",
+  },
+  achevementsLatest: {
+    background: "#3F51B5",
+    height: "250px",
+    borderRadius: "5px",
+    marginBottom: "15px",
+  },
+  questionsLatest: {
+    background: "#3F51B5",
+    height: "450px",
+    borderRadius: "5px",
+    marginBottom: "15px",
   },
 }));
 
@@ -106,7 +126,15 @@ function Homepage() {
   const classes = useStyles();
   return (
     <div className={classes.homepageWrapper}>
-      <div className={classes.contactBar}></div>
+      <div className={classes.miscBar}>
+        <div className={classes.questionsLatest}>
+          <div className={classes.networkTitle}>Questions</div>
+        </div>
+        <div className={classes.achevementsLatest}>
+          <div className={classes.networkTitle}>Achevements</div>
+        </div>
+      </div>
+
       <div className={classes.postsSectionWrapper}>
         <div className={classes.newPostWrapper}>
           <div className={classes.newPost}>
@@ -119,7 +147,7 @@ function Homepage() {
             </div>
           </div>
           <div className={classes.postOptions}>
-            <div className={classes.optionPhoto}>Photo/Video</div>
+            <div className={classes.optionPhoto}>Question</div>
             <div className={classes.optionArticle}>Article</div>
           </div>
         </div>
