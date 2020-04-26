@@ -1,36 +1,348 @@
-import React, { Component } from "react";
-import "./home.css";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 
-class Homepage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+import userImg from "../../assets/images/userPlaceholder.png";
+import post from "../../assets/images/background.jpg";
 
-  componentDidMount() {
-    if (!this.props.isAuthenticated) {
-      this.props.history.push("/registration");
-    }
-  }
+const useStyles = makeStyles((theme) => ({
+  homepageWrapper: {
+    width: "100%",
+    display: "grid",
+    margin: "0 auto",
+    gridTemplateColumns: "0.5fr 1fr 0.5fr",
+    padding: "0 15px",
+    maxWidth: "1440px",
+    gridGap: "10px",
+  },
+  newPostWrapper: {
+    width: "100%",
+    background: "#3F51B5",
+    borderRadius: "5px",
+  },
+  newPost: {
+    display: "flex",
+    alignItems: "center",
+    padding: "10px 20px",
+    paddingBottom: "0px",
+  },
+  userImage: {
+    height: "50px",
+  },
+  newPostField: {
+    background: "#707DC8",
+    borderRadius: "30px",
+    height: "40px",
+    display: "flex",
+    alignItems: "center",
+    padding: "0px 20px",
+    width: "100%",
+    marginLeft: "15px",
+    color: "white",
+  },
+  postOptions: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    marginTop: "15px",
+  },
+  postDescription: {
+    padding: "0 15px",
+  },
+  optionPhoto: {
+    cursor: "pointer",
+    padding: "10px 0px",
+    borderBottomLeftRadius: "5px",
+    "&:hover": {
+      background: "#707DC8",
+    },
+  },
+  postUser: {
+    fontWeight: "bold",
+  },
+  optionArticle: {
+    cursor: "pointer",
+    padding: "10px 0px",
+    borderBottomRightRadius: "5px",
+    "&:hover": {
+      background: "#707DC8",
+    },
+  },
+  post: {
+    background: "#3F51B5",
+    marginTop: "15px",
+    borderRadius: "5px",
+    color: "white",
+  },
+  postsSectionWrapper: {
+    overflowY: "auto",
+    height: "90vh",
+  },
+  postBody: {
+    padding: "10px 25px",
+  },
+  postImg: {
+    width: "100%",
+    marginTop: "10px",
+  },
+  contactBar: {
+    height: "90vh",
+    borderRadius: "5px",
+    color: "white",
+    overflowY: "auto",
+    background: "#3F51B5",
+  },
+  miscBar: {
+    height: "90vh",
+    borderRadius: "5px",
+    color: "white",
+    overflowY: "auto",
+  },
+  networkTitle: {
+    fontWeight: "bold",
+    textAlign: "center",
+    padding: "10px 0px",
+    fontSize: "15px",
+    background: "#707DC8",
+    borderTopLeftRadius: "5px",
+    borderTopRightRadius: "5px",
+  },
+  achevementsLatest: {
+    background: "#3F51B5",
+    height: "250px",
+    borderRadius: "5px",
+    marginBottom: "15px",
+  },
+  questionsLatest: {
+    background: "#3F51B5",
+    height: "450px",
+    borderRadius: "5px",
+    marginBottom: "15px",
+  },
+}));
 
-  render() {
-    return (
-      <div className="commingSoonHomepagewrapper">
-        <div>
-          <h1 className="commingSoonHomepageTitle">WELCOME TO MULTIVERSE</h1>
-          <h4 className="commingSoonHomepageSubtitle">
-            open-source project from Microverse students
-          </h4>
+function Homepage() {
+  const classes = useStyles();
+  return (
+    <div className={classes.homepageWrapper}>
+      <div className={classes.miscBar}>
+        <div className={classes.questionsLatest}>
+          <div className={classes.networkTitle}>Questions</div>
+        </div>
+        <div className={classes.achevementsLatest}>
+          <div className={classes.networkTitle}>Achevements</div>
         </div>
       </div>
-    );
-  }
+
+      <div className={classes.postsSectionWrapper}>
+        <div className={classes.newPostWrapper}>
+          <div className={classes.newPost}>
+            <div>
+              <img src={userImg} className={classes.userImage} alt="" />
+            </div>
+            <div className={classes.newPostField}>
+              {" "}
+              What is on your mind ...
+            </div>
+          </div>
+          <div className={classes.postOptions}>
+            <div className={classes.optionPhoto}>Question</div>
+            <div className={classes.optionArticle}>Article</div>
+          </div>
+        </div>
+        <div className={classes.post}>
+          <div className={classes.newPost}>
+            <div>
+              <img src={userImg} className={classes.userImage} alt="" />
+            </div>
+            <div className={classes.postDescription}>
+              <div className={classes.postUser}>Emir Vatric</div>
+              <div>3 mins</div>
+            </div>
+          </div>
+          <div className={classes.postBody}>
+            It's like smart compose for Code! Install Tabnine plugin in your IDE
+            and get code suggestions as you code from the best programs.
+            Available for all (well, most) languages and IDEs
+          </div>
+          <div className={classes.postOptions}>
+            <div className={classes.optionPhoto}>Like</div>
+            <div className={classes.optionArticle}>Comment</div>
+          </div>
+        </div>
+        <div className={classes.post}>
+          <div className={classes.newPost}>
+            <div>
+              <img src={userImg} className={classes.userImage} alt="" />
+            </div>
+            <div className={classes.postDescription}>
+              <div className={classes.postUser}>Emir Vatric</div>
+              <div>3 mins</div>
+            </div>
+          </div>
+          <div className={classes.postBody}>
+            Snimite svoje najbolje fotografije ikad, uz Galaxy S20, S20+ i S20
+            Ultra modele s kamerama do čak 108MP i 8K videozapisom.
+            <img src={post} className={classes.postImg} alt="" />
+          </div>
+          <div className={classes.postOptions}>
+            <div className={classes.optionPhoto}>Like</div>
+            <div className={classes.optionArticle}>Comment</div>
+          </div>
+        </div>
+        <div className={classes.post}>
+          <div className={classes.newPost}>
+            <div>
+              <img src={userImg} className={classes.userImage} alt="" />
+            </div>
+            <div className={classes.postDescription}>
+              <div className={classes.postUser}>Emir Vatric</div>
+              <div>3 mins</div>
+            </div>
+          </div>
+          <div className={classes.postBody}>
+            It's like smart compose for Code! Install Tabnine plugin in your IDE
+            and get code suggestions as you code from the best programs.
+            Available for all (well, most) languages and IDEs
+          </div>
+          <div className={classes.postOptions}>
+            <div className={classes.optionPhoto}>Like</div>
+            <div className={classes.optionArticle}>Comment</div>
+          </div>
+        </div>
+      </div>
+      <div className={classes.contactBar}>
+        <div className={classes.networkTitle}>NETWORK</div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Emir Vatric</div>
+            <div>Rails/React</div>
+          </div>
+        </div>
+        <div className={classes.newPost}>
+          <div>
+            <img src={userImg} className={classes.userImage} alt="" />
+          </div>
+          <div className={classes.postDescription}>
+            <div className={classes.postUser}>Samir Mujanovic</div>
+            <div>Vue/React</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default withRouter(connect(mapStateToProps, null)(Homepage));
+export default Homepage;
